@@ -85,8 +85,8 @@ setInterval(function() {
 var app = express();  
 app.use('/', function(req, res) {  
   var url = apiUrl.slice(0, -1) + req.url;
-  console.log(url);
-  request({
+  req.pipe(
+     request({
           uri: url,
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -101,12 +101,11 @@ app.use('/', function(req, res) {
                 if (debug) console.log(body);
                 if (JSON.parse(body).status == 200){
                          if (debug) console.log('API Auth OK');
-			 req.pipe(body);
+                         req.pipe(body);
                 } else { console.log('API Auth Failure!'); return; }
           }
-    });
-
-  req.pipe(request( { uri: url, jar: jar } )).pipe(res);
+     })
+  ).pipe(res);
 });
 
 app.listen(process.env.PORT || 8822);
