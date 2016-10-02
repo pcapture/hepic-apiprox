@@ -1,0 +1,16 @@
+{
+  "name": "pcap-apiprox",
+  "description": "PCAPTURE API Bridge",
+  "author": "lorenzo.mangani@gmail.com",
+  "dependencies": {
+    "request": "*",
+    "express": "*"
+  },
+  "scripts": {
+    "start": "node apiprox.js",
+    "forever": "forever start -o ./log/apiprox.log -e ./log/error.log -a --minUptime 1000 --spinSleepTime 3000 ./apiprox.js",
+    "debug": "forever -l ./log/apiprox.log -o ./log/apiprox.log -e ./log/error.log --minUptime 1000 --spinSleepTime 3000 ./apiprox.js",
+    "stop": "forever stopall",
+    "preinstall": "npm install -g forever"
+  }
+}
