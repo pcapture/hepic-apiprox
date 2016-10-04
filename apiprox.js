@@ -56,10 +56,10 @@ var getAuth = function(){
 	  } else {
 		if (debug) console.log(body);
 		if (response.statusCode == 200){
-			var status = JSON.parse(body).status;
-			if (status == "ok" ){
-				 if (debug) console.log('API Auth OK');
-			} else { console.log('API Auth Failure!', status); process.exit(1); }
+			var status = JSON.parse(body).auth;
+			if (!status || status != "true" ){
+				  console.log('API Auth Failure!', status); process.exit(1);
+			}
 		}
 	  }
     });
@@ -93,19 +93,13 @@ app.use('/', function(req, res) {
           form: req.args,
           jar: jar
         }, function(error, response, body) {
-          if (!body) {
+          if (!body || error) {
                 console.log('API Error connecting to '+apiUrl);
-                console.log('Exiting...');
+                console.log('Exiting...',error);
                 process.exit(1);
-          } else {
-                if (debug) console.log(body);
-                if (JSON.parse(body).status == 200){
-                         if (debug) console.log('API Auth OK');
-                         req.pipe(body);
-                } else { console.log('API Auth Failure!'); return; }
           }
      })
   ).pipe(res);
 });
 
-app.listen(process.env.PORT || 8822);
+app.listen(process.env.PORT || 8421);
