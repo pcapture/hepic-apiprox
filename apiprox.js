@@ -41,7 +41,7 @@ jar.setCookie(homercookie, apiSess, function(error, cookie) {});
 
 var getAuth = function(){
 
-    var auth = JSON.stringify({ "username": apiUser, "password": apiPass });
+    var auth = JSON.stringify({ "username": apiUser, "password": apiPass, "auth_type": "local" });
     if (debug) console.log(auth);
     request({
 	  uri: apiSess,
