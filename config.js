@@ -1,6 +1,6 @@
 var config = {
 	apiUrl: 'http://1.2.3.4/api',
-	apiSess: 'http://1.2.3.4/api/session',
+	apiSess: 'http://1.2.3.4/api/v2/session',
 	apiUser: 'username',
 	apiPass: 'password',
 	timeOut: 1800 // seconds
