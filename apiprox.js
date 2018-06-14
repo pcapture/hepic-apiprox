@@ -84,7 +84,7 @@ setInterval(function() {
 
 var app = express();  
 app.use('/', function(req, res) {  
-  var url = apiUrl + req.url;
+  var url = apiUrl + req.url.substring(1);
   req.pipe(
      request({
           uri: url,
@@ -92,8 +92,6 @@ app.use('/', function(req, res) {
         }, function(error, response, body) {
           if (!body || error) {
                 console.log('API Error connecting to '+apiUrl);
-                console.log('Exiting...',error);
-                process.exit(1);
           }
      })
   ).pipe(res);
