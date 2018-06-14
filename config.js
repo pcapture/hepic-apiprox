@@ -1,5 +1,5 @@
 var config = {
-	apiUrl: 'http://127.0.0.1',
+	apiUrl: 'http://127.0.0.1/',
 	apiSess: 'http://127.0.0.1/api/v2/session',
 	apiUser: 'username',
 	apiPass: 'password',
