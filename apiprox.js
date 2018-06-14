@@ -1,5 +1,5 @@
 /*
-* PCAPTURE API Bridge
+* HEPIC API Bridge
 * (c) QXIP BV
 * http://qxip.net
 *
@@ -84,13 +84,10 @@ setInterval(function() {
 
 var app = express();  
 app.use('/', function(req, res) {  
-  var url = apiUrl.slice(0, -1) + req.url;
+  var url = apiUrl + req.url;
   req.pipe(
      request({
           uri: url,
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          form: req.args,
           jar: jar
         }, function(error, response, body) {
           if (!body || error) {
@@ -102,4 +99,6 @@ app.use('/', function(req, res) {
   ).pipe(res);
 });
 
-app.listen(process.env.PORT || 8421);
+app.listen(_config_.proxyPort, _config_.proxyHost, function() {
+  console.log("Proxy listening on %s:%d", _config_.proxyHost,_config_.proxyPort);
+});

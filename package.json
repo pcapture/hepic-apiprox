@@ -3,14 +3,22 @@
   "description": "PCAPTURE API Bridge",
   "author": "lorenzo.mangani@gmail.com",
   "dependencies": {
-    "request": "*",
-    "express": "*"
+    "express": "^4.16.3",
+    "request": "^2.87.0"
   },
   "scripts": {
-    "start": "node apiprox.js",
-    "forever": "forever start -o ./log/apiprox.log -e ./log/error.log -a --minUptime 1000 --spinSleepTime 3000 ./apiprox.js",
-    "debug": "forever -l ./log/apiprox.log -o ./log/apiprox.log -e ./log/error.log --minUptime 1000 --spinSleepTime 3000 ./apiprox.js",
-    "stop": "forever stopall",
-    "preinstall": "npm install -g forever"
-  }
+    "start": "node apiprox.js"
+  },
+  "version": "1.0.0",
+  "main": "apiprox.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pcapture/hepic-apiprox.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pcapture/hepic-apiprox/issues"
+  },
+  "homepage": "https://github.com/pcapture/hepic-apiprox#readme"
 }
