@@ -1,4 +1,13 @@
 # PCAP-APIPROX
-PCAPTURE API Proxy Bridge
+HEPIC API Proxy Bridge
 
-<img src="https://pcapture.com/data/images/pcap_top2.png" />
+### Installation
+```
+git clone https://github.com/pcapture/hepic-apiprox
+cd hepic-apiprox
+npm install
+```
+### Usage
+```
+npm start -c /path/to/config.js
+```
