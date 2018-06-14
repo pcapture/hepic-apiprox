@@ -57,7 +57,7 @@ var getAuth = function(){
 		if (debug) console.log(body);
 		if (response.statusCode == 200){
 			var status = JSON.parse(body).auth;
-			if (!status || status != "true" ){
+			if (!status || status != true ){
 				  console.log('API Auth Failure!', status); process.exit(1);
 			}
 		}
